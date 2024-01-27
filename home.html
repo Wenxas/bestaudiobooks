@@ -1,233 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RheinGeld</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #b2e7b2, #66cc66);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    #container {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease-in-out;
-      width: 80%;
-      max-width: 600px; /* Set a maximum width for PC layout */
-    }
-
-    h1 {
-      color: #008000;
-    }
-
-    #userInfo {
-      margin-top: 20px;
-      text-align: left;
-      font-size: 16px;
-      color: #555;
-    }
-
-    #balance {
-      font-size: 24px;
-      margin-top: 20px;
-      color: #333;
-    }
-
-    .card {
-      background-color: #f0f0f0;
-      padding: 15px;
-      border-radius: 10px;
-      margin: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    button {
-      background-color: #008000;
-      color: #fff;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 5px;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    button:hover {
-      background-color: #006400;
-    }
-
-    #transactionHistory, #accountDetails {
-      margin-top: 20px;
-      text-align: left;
-      color: #555;
-      overflow-y: auto;
-      max-height: 200px;
-    }
-
-    #transactionHistory ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    #transactionHistory ul li {
-      margin-bottom: 10px;
-    }
-
-    #transactionHistory .receive {
-      color: #008000;
-    }
-
-    #transactionHistory .spend {
-      color: #FF0000;
-    }
-
-    #notificationButton {
-      background-color: #006400;
-      color: #fff;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      margin: 5px;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    #notificationButton:hover {
-      background-color: #004000;
-    }
-
-    @media (max-width: 600px) {
-      #container {
-        width: 90%;
-      }
-
-      /* Additional styling for phones */
-      button {
-        width: 100%;
-      }
-    }
-
-    /* Additional UI features */
-    button:active {
-      transform: scale(0.95);
-    }
-
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="container">
-    <h1>RheinGeld</h1>
-    <div id="userInfo">
-      <i class="fas fa-user-circle"></i> <strong>User Information:</strong><br>
-      <span id="userName">Lena Müller</span>
-    </div>
-    <div id="balance">Overall Balance: €232.50</div>
-    
-    <div class="card">
-      <span>Card: **** **** **** 9876</span>
-      <span>Balance: €120.00</span>
-    </div>
-    <div class="card">
-      <span>Card: **** **** **** 5678</span>
-      <span>Balance: €60.50</span>
-    </div>
-    <div class="card">
-      <span>Card: **** **** **** 4321</span>
-      <span>Balance: €52.00</span>
-    </div>
-    
-    <button onclick="sendMoney()">Send <i class="fas fa-paper-plane"></i></button>
-    <button onclick="receiveMoney()">Receive <i class="fas fa-hand-holding-usd"></i></button>
-    <button onclick="showTransactionHistory()">Transaction History <i class="fas fa-history"></i></button>
-    <button onclick="showAccountDetails()">Account Details <i class="fas fa-info-circle"></i></button>
-    <button onclick="logout()">Logout <i class="fas fa-sign-out-alt"></i></button>
-
-    <div id="transactionHistory">
-      <h2>Transaction History</h2>
-      <ul>
-        <li class="spend">Spent €89.99 at Zara on 2024-01-27</li>
-        <li class="spend">Spent €35.50 at Adidas on 2024-01-25</li>
-        <li class="receive">Received €500.00 from Work on 2024-01-24</li>
-        <li class="spend">Spent €120.00 at Apple Store on 2024-01-23</li>
-        <li class="receive">Received €1,200.00 from Freelance Project on 2024-01-22</li>
-        <!-- Add more transaction history items as needed -->
-      </ul>
-    </div>
-
-    <div id="accountDetails">
-      <h2>Account Details</h2>
-      <p>Account Number: *************9876</p>
-      <p>Account Type: Savings</p>
-      <p>Branch: Main Branch</p>
-    </div>
-  </div>
-
-  <script>
-    function sendMoney() {
-      alert("Send money functionality will be implemented here.");
-    }
-
-    function receiveMoney() {
-      alert("Receive money functionality will be implemented here.");
-    }
-
-    function showTransactionHistory() {
-      var transactionHistory = document.getElementById("transactionHistory");
-      var accountDetails = document.getElementById("accountDetails");
-
-      if (transactionHistory.style.display === "none") {
-        transactionHistory.style.display = "block";
-        accountDetails.style.display = "none";
-      } else {
-        transactionHistory.style.display = "none";
-      }
-    }
-
-    function showAccountDetails() {
-      var transactionHistory = document.getElementById("transactionHistory");
-      var accountDetails = document.getElementById("accountDetails");
-
-      if (accountDetails.style.display === "none") {
-        accountDetails.style.display = "block";
-        transactionHistory.style.display = "none";
-      } else {
-        accountDetails.style.display = "none";
-      }
-    }
-
-    function showNotifications() {
-      alert("Notification functionality will be implemented here.");
-    }
-
-    function logout() {
-      alert("Logout functionality will be implemented here.");
-    }
-  </script>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Best Audiobooks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Best Audiobooks</h1>
+    <h2>by StitchedPanda(Wenxas)</h2>
+    <hr>
+    <h3>Ego is The Enemy</h3>
+    <img src="https://thumb.knygos-static.lt/teE2DujNvzj9b7eNHV0ddCpQ5nI=/fit-in/0x800/images/books/1164118/9781781257029.jpg" width="98" height="133">
+    <h4>5:34:27</h4>
+    <a href="egoistheenemy.html">Quotes</a>
+    <a href="https://youtu.be/ukd4x77vNCw">Listen For Free</a>
+    <hr width="430px">
+    <h3>Art of war</h3>
+    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630683326i/10534.jpg" width="98" height="133">
+    <h4>1:13:25</h4>
+    <a href="artofwar.html">Quotes</a>
+    <a href="https://youtu.be/jxcMRkqaQdw">Listen For Free</a>
+    <hr width="430px">
+    <h3>How to Talk to Anyone</h3>
+    <img src="https://thumb.knygos-static.lt/mIxpvKcSl10J3fIFoLXhz1Z8tpU=/fit-in/0x800/images/books/2799144/9780071418584.jpg" width="98" height="133">
+    <h4>8:41:30</h4>
+    <a href="howtotalktoanyone.html">Quotes</a>
+    <a href="https://youtu.be/MTqRjzamYWs">Listen For Free</a>
+  </body>
 </html>
